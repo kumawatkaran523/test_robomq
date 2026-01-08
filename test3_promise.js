@@ -1,4 +1,4 @@
-import fs, { readFile} from 'fs'
+import fs, { ftruncate, readFile} from 'fs'
 // const pr=new Promise((resolve,reject)=>{
 //     setTimeout(() => {resolve()}, 1000);
 // })
@@ -41,6 +41,7 @@ readFilePromisified('test.txt').then((data)=>{
 //     console.log(data)
 // })
 
+// success and failed example
 const pr=new Promise((resolve,rejects)=>{
     const succes=false;
     if(succes){
@@ -56,6 +57,7 @@ pr.then(()=>{
     console.log("Reject");
 })
 
+// value passing
 Promise.resolve(1)
   .then((x) => {
     console.log(x);
@@ -68,3 +70,24 @@ Promise.resolve(1)
   .then((x) => {
     console.log(x);
   });
+
+
+//  UNDERSTAND IN SIMPLE WAY 
+// const prm=new Promise((resolve,reject))
+
+const resolve=()=>{
+    console.log("resolve fn")
+}
+const reject=()=>{
+    console.log("reject fn")
+}
+
+function promise(resolve,reject){
+    const succes=true;
+    if(succes){
+        resolve();
+    }else{
+        reject();
+    }
+}
+promise(resolve,reject);
